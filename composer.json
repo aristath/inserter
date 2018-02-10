@@ -1,0 +1,32 @@
+{
+  "name": "aristath/inserter",
+  "type": "library",
+  "keywords": ["WordPress", "Underscore.js", "REST"],
+  "description": "WordPress templating using Underscore.js templates",
+  "homepage": "https://aristath.github.io/inserter",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "aristath",
+      "email": "aristath@gmail.com",
+      "homepage": "https://aristath.github.io",
+      "role":"Developer"
+    }
+  ],
+  "autoload": {
+      "files": ["inserter.php"]
+  },
+  "require": {
+    "php": ">=5.2",
+    "php-coveralls/php-coveralls": "^2.0",
+    "phpunit/phpunit": "*"
+  },
+  "require-dev": {
+    "composer/installers": "*",
+    "phpunit/phpunit": "*",
+    "dealerdirect/phpcodesniffer-composer-installer": "*",
+    "wimg/php-compatibility": "*",
+    "wp-coding-standards/wpcs": "*",
+    "codacy/coverage": "dev-master"
+  }
+}
