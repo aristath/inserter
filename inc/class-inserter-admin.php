@@ -243,7 +243,10 @@ class Inserter_Admin {
 			return;
 		}
 		wp_add_inline_script( 'code-editor', sprintf( 'jQuery( function() { wp.codeEditor.initialize( "inserter-template-data", %s ); } );', wp_json_encode( $settings ) ) );
-		wp_enqueue_script( 'inserter-admin-app', inserter()->get_url() . 'js/admin-app.js', array( 'wp-util', 'wp-api', 'backbone', 'inserter' ), false, true );
+		wp_enqueue_script( 'inserter-admin-app', inserter()->get_url() . 'js/admin-app.js', array( 'jquery' ), false, true );
+		wp_localize_script( 'inserter-admin-app', 'inserterL10n', array(
+			'requireElement' => esc_attr__( 'The "element" field is required.', 'inserter' ),
+		) );
 		wp_enqueue_style( 'inserter-admin-styles', inserter()->get_url() . 'css/admin.css' );
 	}
 
