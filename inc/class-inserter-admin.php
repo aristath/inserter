@@ -52,8 +52,8 @@ class Inserter_Admin {
 				'hierarchical'        => false,
 				'supports'            => array( 'title', 'revisions' ),
 				'labels'              => array(
-					'name'          => __( 'Inserter Templates', 'inserter' ),
-					'singular_name' => __( 'Inserter Template', 'inserter' ),
+					'name'          => __( 'Templates', 'inserter' ),
+					'singular_name' => __( 'Template', 'inserter' ),
 				),
 			)
 		);
@@ -165,9 +165,30 @@ class Inserter_Admin {
 	 * @return void
 	 */
 	public function metabox_el( $post ) {
+		$mode = get_post_meta( $post->ID, 'inserter_template_element_mode', true );
+		if ( 'replace' !== $mode && 'append' !== $mode && 'prepend' !== $mode ) {
+			$mode = 'replace';
+		}
 		?>
 		<p><?php esc_attr_e( 'Please enter the CSS selector of the element where this template will be rendered.', 'inserter' ); ?></p>
 		<input name="inserter-template-el" id="inserter-template-el" value="<?php echo get_post_meta( $post->ID, 'inserter_template_el', true ); // WPCS: XSS ok. ?>">
+		<p><?php esc_attr_e( 'Select the template behaviour in regards to the element.', 'inserter' ); ?>
+		<p>
+			<label>
+				<input type="radio" name="inserter-element-mode" value="replace"<?php echo ( 'replace' === $mode ) ? ' checked' : ''; ?>>
+				<?php esc_attr_e( 'Replace Contents', 'inserter' ); ?>
+			</label>
+			<br>
+			<label>
+				<input type="radio" name="inserter-element-mode" value="prepend"<?php echo ( 'prepend' === $mode ) ? ' checked' : ''; ?>>
+				<?php esc_attr_e( 'Prepend to contents', 'inserter' ); ?>
+			</label>
+			<br>
+			<label>
+				<input type="radio" name="inserter-element-mode" value="append"<?php echo ( 'append' === $mode ) ? ' checked' : ''; ?>>
+				<?php esc_attr_e( 'Append to contents', 'inserter' ); ?>
+			</label>
+		</p>
 		<?php
 	}
 
@@ -295,6 +316,15 @@ class Inserter_Admin {
 		if ( isset( $_POST['inserter-template-post-id'] ) ) {
 			$post_id_to_save = absint( wp_unslash( $_POST['inserter-template-post-id'] ) );
 			update_post_meta( $post_id, 'inserter_template_post_id', $post_id_to_save );
+		}
+
+		// Save the data-type.
+		if ( isset( $_POST['inserter-element-mode'] ) ) {
+			$mode = sanitize_text_field( wp_unslash( $_POST['inserter-element-mode'] ) );
+			if ( 'replace' !== $mode && 'prepend' !== $mode && 'append' !== $mode ) {
+				$mode = 'replace';
+			}
+			update_post_meta( $post_id, 'inserter_template_element_mode', $mode );
 		}
 	}
 }
