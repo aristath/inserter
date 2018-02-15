@@ -98,5 +98,11 @@ _.each( inserterAppData, function( data, id ) {
 		return;
 	}
 	template = wp.template( id );
-	jQuery( inserterAppEl[ id ] ).html( template( data ) );
+	if ( data.inserterElementMode && 'prepend' === data.inserterElementMode ) {
+		jQuery( inserterAppEl[ id ] ).prepend( template( data ) );
+	} else if ( data.inserterElementMode && 'append' === data.inserterElementMode ) {
+		jQuery( inserterAppEl[ id ] ).append( template( data ) );
+	} else {
+		jQuery( inserterAppEl[ id ] ).html( template( data ) );
+	}
 } );

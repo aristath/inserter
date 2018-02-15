@@ -148,6 +148,12 @@ class Inserter {
 				$data = $post;
 			}
 
+			// Make sure $data is converted to an array so we can tweak it.
+			$data = (array) $data;
+
+			// Add the inserter_template_element_mode meta.
+			$data['inserterElementMode'] = get_post_meta( $template->ID, 'inserter_template_element_mode', true );
+
 			// Add the template.
 			$this->add_template_string(
 				'inserter-template-' . absint( $template->ID ),
