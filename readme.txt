@@ -3,8 +3,8 @@ Contributors: aristath
 Tags: underscorejs, rest api, rest, templates
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.9
-Tested up to: 4.9.2
-Stable tag: 1.0
+Tested up to: 4.9
+Stable tag: 1.1
 License: MIT
 License URI: http://opensource.org/licenses/https://opensource.org/licenses/MIT
 
@@ -25,6 +25,13 @@ To see the available data, you can add this line in your template and then check
 Simply install as a normal WordPress plugin and activate.
 
 == Changelog ==
+
+= 1.1 =
+
+February 17, 2018
+
+* Add `append` and `prepend` modes in addition to `replace`.
+* Require "element" field to be defined when adding/editing template
 
 = 1.0 =
 
