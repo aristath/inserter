@@ -5,7 +5,7 @@
  * Description:   Create custom underscore.js templates and inject them in your pages
  * Author:        Aristeides Stathopoulos
  * Author URI:    http://aristath.github.io
- * Version:       1.0
+ * Version:       1.1
  * Text Domain:   inserter
  *
  * GitHub Plugin URI: aristath/inserter
