@@ -20,6 +20,8 @@ You can expose data using the REST API, using the global `$post` object, or prov
 To see the available data, you can add this line in your template and then check the console when your site loads:
 `<# console.log( data ); #>`
 
+You can read more about how to use the plugin on [https://aristath.github.io/wordpress/introducing-wordpress-inserter-plugin](https://aristath.github.io/wordpress/introducing-wordpress-inserter-plugin).
+
 == Installation ==
 
 Simply install as a normal WordPress plugin and activate.
